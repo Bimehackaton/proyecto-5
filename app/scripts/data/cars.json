@@ -1,6 +1,19 @@
 [
 {
-	"id" : 1,
-	"name" : "cocherito lere"
+  "id" : 1,
+  "latitude": 43.266506,
+  "longitude": -2.934938,
+  "icon": "images/car.png"
+}, {
+  "id" : 2,
+  "latitude": 43.286606,
+  "longitude": -2.934938,
+  "icon": "images/car.png"
+}, {
+  "id" : 3,
+  "latitude": 43.246706,
+  "longitude": -2.934938,
+  "icon": "images/car.png"
 }
+
 ]

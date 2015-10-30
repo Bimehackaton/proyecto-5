@@ -34,7 +34,7 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/', {
+      .when('/car', {
         templateUrl: 'views/car.html',
         controller: 'CarCtrl',
         controllerAs: 'car'
