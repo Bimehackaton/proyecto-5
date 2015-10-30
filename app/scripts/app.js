@@ -39,6 +39,11 @@ angular
         controller: 'CarCtrl',
         controllerAs: 'car'
       })
+      .when('/car-register', {
+        templateUrl: 'views/car-register.html',
+        controller: 'CarRegisterCtrl',
+        controllerAs: 'carregistrer'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
