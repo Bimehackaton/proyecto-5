@@ -21,7 +21,6 @@ angular.module('proyecto5App')
       method : 'GET',
       url    : '/scripts/data/cars.json'
     }).then(function successCallback(response) {
-      console.log(response);
       $scope.carMarkers = response.data;
       // this callback will be called asynchronously
       // when the response is available
