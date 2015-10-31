@@ -32,6 +32,11 @@ angular.module('proyecto5App')
         console.log(model);
     };
 
+    $scope.onChangeFestival = function(marker, eventName, model) {
+      $scope.selectedCarMarker = null;
+      model = null;
+    };
+
     $scope.reservar = function(m) {
       $scope.selectedCarMarker = $scope.carMarkers;
     };
