@@ -2,7 +2,7 @@
 {
   "id" : 1,
   "name": "AC/DC",
-  "likes" : 0,
+  "likes" : 1000,
   "real-hour": "9:00",
   "posible-hours" : 
     [
@@ -16,7 +16,7 @@
 },{
   "id" : 2,
   "name": "Extremoduro",
-  "likes" : 0,
+  "likes" : 10,
   "real-hour": "10:00",
   "posible-hours" : 
     [
@@ -30,7 +30,7 @@
 },{
   "id" : 3,
   "name": "La Polla Records",
-  "likes" : 0,
+  "likes" : 100,
   "real-hour": "11:00",
   "posible-hours" : 
     [

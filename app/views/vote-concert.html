@@ -16,8 +16,9 @@
   </script>
 
   <uib-accordion close-others="oneAtATime">
-	<uib-accordion-group ng-repeat="concert in concerts" heading="{{concert.name}} | Likes: {{concert.likes}}">
+	<uib-accordion-group ng-repeat="concert in concerts" heading="{{concert.name}} - Likes: {{concert.likes}}">
 	<div class="media">
+	
 	  <div class="media-left">
 	      <img class="media-object img-responsive img-thumbnail" width="100" src="{{concert.url}}" alt="{{concert.name}}">
 	  </div>
@@ -26,6 +27,14 @@
 	    <button ng-click='concert.track.paused ? concert.track.play() : concert.track.pause()'><span class="glyphicon glyphicon-play"></button>
 		 <button ng-click='concert.track.restart()'><span class="glyphicon glyphicon-stop"></span></button>
 		 <button ng-click='concert.track.muting = !concert.track.muting'><span class="glyphicon glyphicon-volume-off"></span></button>
+
+		 <button class="btn btn-success" ng-click="addLike(concert.id)" >
+		 		<span class="glyphicon glyphicon-ok"></span>
+		 </button>
+
+		 <button class="btn btn-danger" ng-click="disLike(concert.id)">
+		 	<span  class="glyphicon glyphicon-remove"></span>
+		 </button>	
 	  </div>
 	</div>
 	</uib-accordion-group>

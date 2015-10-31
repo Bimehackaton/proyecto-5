@@ -36,7 +36,29 @@ angular.module('proyecto5App')
 			});
 	});
 	
-	console.log($scope.concerts);
+	$scope.addLike = function(idConcert){
+
+		console.log('dentro');
+
+		angular.forEach($scope.concerts, function(concert){
+			if(concert.id == idConcert){
+				concert.likes++;
+			}
+		});
+	};
+
+	$scope.disLike = function(idConcert){
+		angular.forEach($scope.concerts, function(concert){
+			if(concert.id == idConcert){
+				concert.likes--;
+			}
+		});
+	};
 	
+	$scope.test = function(conciertos) {
+		console.log(conciertos);
+		console.log('fafa');
+	}
+
 	
 });
