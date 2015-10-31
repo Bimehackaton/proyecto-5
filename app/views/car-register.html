@@ -1,14 +1,5 @@
 <h1>¡Da de alta tu coche para compartir gastos!</h1>
-<<<<<<< HEAD
-<form novalidate class="simple-form">
-  Nombre: <input type="text" ng-model="car.name" /><br />
-  E-mail: <input type="email" ng-model="car.email" /><br />
-  Telefono: <input type="tel" ng-model="car.telefono" /><br />
-  Plazas: <input type="number" min="1" ng-model="car.sitios" />
-  <input type="button" ng-click="reset()" value="Reset" />
-  <input type="submit" ng-click="register(car)" value="Save" />
-=======
- <form>
+ <form name="carForm">
   <div class="form-group">
     <label>Nombre</label>
     <input type="text" class="form-control" placeholder="Nombre" ng-model="car.nombre">
@@ -23,7 +14,7 @@
   </div>
   <div class="form-group">
     <label>Plazas</label>
-    <input type="number" min="1" class="form-control" placeholder="Plazas" ng-model="car.plazas">
+    <input type="number" min="1" class="form-control" placeholder="Plazas" ng-model="car.plazas" required>
   </div>
   <div class="form-group">
     <label>Provincia</label>
@@ -98,5 +89,4 @@
   </div>
   <button type="button" class="btn btn-default" ng-click="reset()">Borrar</button>
   <button type="submit" class="btn btn-default" ng-click="register(car)">¡Registrar!</button>
->>>>>>> cc29f066dbb53b1957e38b877df0ce68fd0aa653
 </form>
