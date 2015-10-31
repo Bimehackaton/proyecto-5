@@ -49,6 +49,19 @@ angular.module('proyecto5App')
 
     $scope.reservar = function(carMarker) {
       $scope.selectedCarMarker = carMarker;
+      $http({
+        url: "https://api.mongolab.com/api/1/databases/project/collections/reservedCar?apiKey=4fccb901e4b0d43c618156c0",
+        method: "POST"
+        data: {car_id: carMarker.id, user: $scope.user.id}
+      }).then(function(response) {
+        angular.forEach(response.data, function(car) {
+          car.id = car._id.$oid;
+          car.geo = {
+            type : "Point",
+            coordinates: [car.geo.lng, car.geo.lat]
+          };
+          car.icon = "images/car.png";
+        });
     };
 
     $http({
