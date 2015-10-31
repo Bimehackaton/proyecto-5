@@ -77,8 +77,12 @@
 	    </select>
   </div>
   <div class="form-group">
+    <label>Direccion</label>
+    <input type="text" class="form-control" placeholder="Direccion" ng-model-options="{ debounce: { 'default': 500 } }" ng-change="onChange(car.direccion)" ng-model="car.direccion">
+  </div>
+  <div class="form-group">
     <label>Cod.Postal</label>
-    <input type="numer" min="1" class="form-control" placeholder="Codigo Postal" ng-model="car.codigopostal">
+    <input disabled type="numer" min="1" class="form-control" placeholder="Codigo Postal" ng-model="car.codigopostal">
   </div>
   <div class="form-group">
     <label>Festival</label>

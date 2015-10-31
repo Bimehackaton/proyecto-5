@@ -43,6 +43,24 @@ angular.module('proyecto5App')
       });
     };
 
+    $scope.onChange = function (direccion){
+
+      $http({
+        url: "http://maps.google.com/maps/api/geocode/json?",
+        method: "GET",
+        params : {'address':direccion, 'sensor':true},
+        
+      }).then(function(response) {
+        $scope.car.codigopostal = response.data.results[0].address_components[response.data.results[0].address_components.length-1].short_name;
+        $scope.car.geo = response.data.results[0].geometry.location;
+        console.log($scope.car.codigopostal);
+        console.log($scope.car.geo);
+      }).catch(function(error) {
+        console.log(error)
+      });
+    };
+
+
     $scope.reset = function() {
         $scope.car = {};
       };
