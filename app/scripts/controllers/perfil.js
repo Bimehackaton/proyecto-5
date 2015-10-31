@@ -10,9 +10,9 @@
 angular.module('proyecto5App')
   .controller('PerfilCtrl', function ($scope, Facebook, $http) {
   	Facebook.api('/me', function(response) {
-       $scope.user = response;
-
-       $http({
+  		$scope.user = response;
+       	console.log(response);
+       	$http({
 	      url: "https://api.mongolab.com/api/1/databases/project/collections/house",
 	      method: "GET",
 	      params : {
@@ -33,5 +33,5 @@ angular.module('proyecto5App')
 	    }).then(function(response) {
 	    	$scope.myCars = response.data;
 	    });
-    });
+    }, {fields: 'email,name,location,age_range,link,locale'});
   });

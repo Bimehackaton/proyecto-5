@@ -87,7 +87,7 @@ angular
         Facebook.api('/me', function(response) {
           $rootScope.user = response;
         });
-      });
+      }, { scope: 'email,public_profile,user_birthday,user_location,user_about_me,user_photos' });
     };
 
     $rootScope.logout = function() {
