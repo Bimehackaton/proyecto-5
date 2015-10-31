@@ -33,5 +33,5 @@ angular.module('proyecto5App')
 	    }).then(function(response) {
 	    	$scope.myCars = response.data;
 	    });
-    }, {fields: 'email,name,location,age_range,link,locale'});
+    }, {fields: 'email,name,location,age_range,bio,link,locale'});
   });
