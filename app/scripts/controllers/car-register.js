@@ -8,10 +8,15 @@
  * Controller of the proyecto5App
  */
 angular.module('proyecto5App')
-    .controller('CarRegisterCtrl', function ($scope, $http, $uibModal) {
+    .controller('CarRegisterCtrl', function ($scope, $http, $uibModal, Facebook) {
 
         $scope.master = {};
         $scope.car = {};
+
+        Facebook.api('/me', function(response) {
+          $scope.car.user_id = response.id;
+          $scope.car.user_name = response.name;
+        });
     
         $scope.register = function (car){
     	   console.log('pacoooo', car);
@@ -81,50 +86,25 @@ angular.module('proyecto5App')
                 animation: $scope.animationsEnabled,
                 templateUrl: 'myModalContent.html',
                 controller: 'ModalInstanceCtrl',
-                size: size,
-                resolve: {
-                    items: function () {
-                    return $scope.items;
-                        }
-                    }
-                });
+                size: size});
 
-            modalInstance.result.then(function (selectedItem) {
+            /*modalInstance.result.then(function (selectedItem) {
                     $scope.selected = selectedItem;
                 }, function () {
                     $log.info('Modal dismissed at: ' + new Date());
-                });
+                });*/
         };
 
         $scope.toggleAnimation = function () {
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
-
-        /*$scope.selected = {
-            item: $scope.items[0]
-        };*/
-
-        $scope.ok = function () {
-            $uibModalInstance.close($scope.selected.item);
-        };
-
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-
-        $scope.open();
 }).controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, items) {
 
-  /*$scope.items = items;
-  $scope.selected = {
-    item: $scope.items[0]
-  };
-
   $scope.ok = function () {
-    $uibModalInstance.close($scope.selected.item);
+    $uibModalInstance.close();
   };
 
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
-  };*/
+  };
 });

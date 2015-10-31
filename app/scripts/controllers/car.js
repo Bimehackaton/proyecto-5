@@ -8,7 +8,7 @@
  * Controller of the proyecto5App
  */
 angular.module('proyecto5App')
-  .controller('CarCtrl', function ($scope, $http) {
+  .controller('CarCtrl', function ($scope, $http, $filter) {
     $scope.map = {
       center: {
       latitude: 43.266506,
@@ -17,17 +17,32 @@ angular.module('proyecto5App')
       zoom: 13
     };
 
+    $scope.$watch("selectedFestival", function(selectedFestival){
+      if (!selectedFestival) {
+        $scope.filteredMarkers = $scope.carMarkers;
+        return;
+      }
+
+      $scope.filteredMarkers = $filter("filter")($scope.carMarkers, {festival : selectedFestival});
+   });
+
     $scope.onClick = function(marker, eventName, model) {
-        console.log("Clicked!");
         model.show = !model.show;
         $scope.selectedCarMarker = model;
     };
 
     $scope.reservar = function(m) {
-      console.log("Clicked!");
       $scope.selectedCarMarker = $scope.carMarkers;
-      console.log();
     };
+
+    $http({
+      url: "scripts/data/festivals.json",
+      method: "GET"
+    }).then(function(response) {
+      $scope.festivals = response.data;
+    }).catch(function(error) {
+      console.error(error);
+    });
 
     $http({
       url: "https://api.mongolab.com/api/1/databases/project/collections/car?apiKey=4fccb901e4b0d43c618156c0",
@@ -41,15 +56,15 @@ angular.module('proyecto5App')
         }
         car.icon = "images/car.png";
       });
-      $scope.carMarkers = response.data;  
-      console.log($scope.carMarkers)  
+      $scope.carMarkers = response.data;
+      $scope.filteredMarkers = $scope.carMarkers;
 
       // this callback will be called asynchronously
       // when the response is available
       }, function errorCallback(response) {
-      console.error(response);
-      // called asynchronously if an error occurs
-      // or server returns response with an error status.
+        console.error(response);
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
     });
 
   });

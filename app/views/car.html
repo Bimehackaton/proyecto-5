@@ -4,7 +4,7 @@
 
 <div>
   <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-    <ui-gmap-markers models="carMarkers" coords="'geo'" icon="'icon'" click="onClick">
+    <ui-gmap-markers models="filteredMarkers" coords="'geo'" icon="'icon'" click="onClick">
       <ui-gmap-windows show="show">
         <div ng-non-bindable>
           {{festival}}
@@ -12,6 +12,11 @@
       </ui-gmap-windows>
     </ui-gmap-markers>
   </ui-gmap-google-map>
+
+  <select name="repeatSelect" id="repeatSelect" ng-model="selectedFestival">
+      <option ng-repeat="festival in festivals" value="{{festival.id}}">{{festival.name}}</option>
+  </select>
+  {{selectedFestival}}
 
   <div>
     Sellected:

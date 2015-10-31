@@ -36,6 +36,7 @@ angular.module('proyecto5App')
 
     $scope.me = function() {
       Facebook.api('/me', function(response) {
+        console.log(response);
         $scope.user = response;
       });
     };
