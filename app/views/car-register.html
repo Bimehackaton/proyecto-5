@@ -1,9 +1,9 @@
 <h1>¡Da de alta tu coche para compartir gastos!</h1>
 <form novalidate class="simple-form">
-    Nombre: <input type="text" ng-model="carregister.car.name" /><br />
-    E-mail: <input type="email" ng-model="carregister.car.email" /><br />
-    Telefono: <input type="tel" ng-model="carregister.car.telefono" /><br />
-    Plazas: <input type="number" min="1" ng-model="carregister.car.sitios" />
-    <input type="button" ng-click="carregister.reset()" value="Reset" />
-    <input type="submit" ng-click="carregister.register(car)" value="Save" />
-  </form>
+  Nombre: <input type="text" ng-model="car.name" /><br />
+  E-mail: <input type="email" ng-model="car.email" /><br />
+  Telefono: <input type="tel" ng-model="car.telefono" /><br />
+  Plazas: <input type="number" min="1" ng-model="car.sitios" />
+  <input type="button" ng-click="reset()" value="Reset" />
+  <input type="submit" ng-click="register(car)" value="Save" />
+</form>
