@@ -19,7 +19,8 @@ angular
     'uiGmapgoogle-maps',
     'facebook',
     'ui.bootstrap',
-    'spotify'
+    'spotify',
+    'ngAudio'
   ])
 
   .config(function(uiGmapGoogleMapApiProvider, FacebookProvider) {

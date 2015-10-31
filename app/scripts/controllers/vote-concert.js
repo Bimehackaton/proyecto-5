@@ -8,7 +8,7 @@
  * Controller of the proyecto5App
  */
 angular.module('proyecto5App')
-  .controller('VoteConcertCtrl', function ($scope, $http, Spotify) {
+  .controller('VoteConcertCtrl', function ($scope, $http, Spotify, ngAudio) {
   	//$scope.concerts = null;
 	$scope.oneAtATime = true;
 	$scope.status = {
@@ -27,9 +27,9 @@ angular.module('proyecto5App')
 			  		console.log(data);
 			  		concert.artistId = data.artists.items[0].id; 
 			  		concert.url = data.artists.items[0].images[0].url; 
-			  		
+
 				  	Spotify.getArtistTopTracks(concert.artistId, 'AU', {"limit":1}).then(function (data) {
-					  concert.track = data.tracks[0].preview_url;
+					  concert.track = ngAudio.load(data.tracks[0].preview_url);
 					});
 
 				});

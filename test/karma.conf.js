@@ -37,6 +37,7 @@ module.exports = function(config) {
       'bower_components/angular-facebook/lib/angular-facebook.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-spotify/dist/angular-spotify.min.js',
+      'bower_components/angular-audio/app/angular.audio.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
