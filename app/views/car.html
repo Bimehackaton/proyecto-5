@@ -12,6 +12,8 @@
           </div>
         </ui-gmap-windows>
       </ui-gmap-markers>
+      <ui-gmap-markers models="houseMarkers" coords="'geo'" icon="'icon'" click="onHouseClick">
+      </ui-gmap-markers>
     </ui-gmap-google-map>
   </div>
   <div class="col-xs-4">
@@ -23,9 +25,12 @@
         </select>
       </div>
     
-      <div ng-show="selectedCarMarker" ng-repeat="festival in festivals | filter:{id:selectedFestival}">
+      <div ng-show="selectedCarMarker">
           <hr>
-          <strong>Festival:</strong> <span>{{festival.name}}</span><br />
+          <strong>Festival:</strong> 
+          <span  ng-repeat="festival in festivals | filter:{id:selectedCarMarker.festival}">
+            {{festival.name}}
+          </span><br />
           <hr>
           <strong>Direccion:</strong> <span>{{selectedCarMarker.direccion}}</span>
           <hr>
@@ -34,8 +39,29 @@
       </div>
 
       <div>
-        <button class="btn btn-success disabled" ng-class="{disabled:selectedCarMarker==null}" ng-click="reservar()">Reservar</button>
+        <button class="btn btn-success disabled" ng-class="{disabled:selectedCarMarker==null}" ng-click="reservar(selectedCarMarker)">Reservar</button>
       </div>
-    </div>
-  </form>
+    </form>
+
+    <form name="houseForm">
+      <input type="hidden" name="id" value="{{selectedHouseMarker.id}}">
+  
+      <div ng-show="selectedHouseMarker">
+          <hr>
+          <strong>Festival:</strong> 
+          <span  ng-repeat="festival in festivals | filter:{id:selectedHouseMarker.festival}">
+            {{festival.name}}
+          </span><br />
+          <hr>
+          <strong>Direccion:</strong> <span>{{selectedHouseMarker.direccion}}</span>
+          <hr>
+          <strong>Plazas libres:</strong> <span>{{selectedHouseMarker.plazas}}</span>
+           <hr>
+      </div>
+
+      <div>
+        <button class="btn btn-success disabled" ng-class="{disabled:selectedHouseMarker==null}" ng-click="reservarHouse(selectedHouseMarker)">Reservar</button>
+      </div>
+    </form>
+  </div>
 </div>

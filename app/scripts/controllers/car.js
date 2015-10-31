@@ -13,7 +13,6 @@ angular.module('proyecto5App')
       if(response.status === 'connected') {
         Facebook.api('/me', function(response) {
           $scope.user = response;
-          console.log($scope.user);
         });
       }
     });
@@ -51,17 +50,14 @@ angular.module('proyecto5App')
       $scope.selectedCarMarker = carMarker;
       $http({
         url: "https://api.mongolab.com/api/1/databases/project/collections/reservedCar?apiKey=4fccb901e4b0d43c618156c0",
-        method: "POST"
-        data: {car_id: carMarker.id, user: $scope.user.id}
+        method: "POST",
+        data: {
+          car_id: carMarker.id,
+          user_id: $scope.user.id
+        }
       }).then(function(response) {
-        angular.forEach(response.data, function(car) {
-          car.id = car._id.$oid;
-          car.geo = {
-            type : "Point",
-            coordinates: [car.geo.lng, car.geo.lat]
-          };
-          car.icon = "images/car.png";
-        });
+        console.log('reserva ok');
+      });
     };
 
     $http({
@@ -97,10 +93,38 @@ angular.module('proyecto5App')
     });
 
      $http({
-      url: "scripts/data/houses.json",
+      url: "https://api.mongolab.com/api/1/databases/project/collections/house?apiKey=4fccb901e4b0d43c618156c0",
       method: "GET"
     }).then(function(response) {
       console.log(response);
+      angular.forEach(response.data, function(house) {
+        house.id = house._id.$oid;
+        house.geo = {
+          type : "Point",
+          coordinates: [house.geo.lng, house.geo.lat]
+        };
+        house.icon = "images/apartment-3.png";
+      });
       $scope.houseMarkers = response.data;
     });
+
+    $scope.onHouseClick = function(marker, eventName, model) {
+        model.show = !model.show;
+        $scope.selectedHouseMarker = model;
+        console.log(model);
+    };
+
+    $scope.reservarHouse = function(houseMarker) {
+      $scope.selectedHouseMarker = houseMarker;
+      $http({
+        url: "https://api.mongolab.com/api/1/databases/project/collections/reservedHouse?apiKey=4fccb901e4b0d43c618156c0",
+        method: "POST",
+        data: {
+          car_id: houseMarker.id,
+          user_id: $scope.user.id
+        }
+      }).then(function(response) {
+        console.log('reserva ok');
+      });
+    };
   });
