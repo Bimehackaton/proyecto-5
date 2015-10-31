@@ -68,25 +68,13 @@ angular
   })
   .run(function($rootScope, Facebook) {
     Facebook.getLoginStatus(function(response) {
-      if(response.status === 'connected') {
-        $rootScope.loggedIn = true;
-        Facebook.api('/me', function(response) {
-          $rootScope.user = response;
-        });
-      } else {
-        $rootScope.loggedIn = false;
-      }
+        $rootScope.loggedIn = (response.status === 'connected');
     });
 
     $rootScope.login = function() {
       // From now on you can use the Facebook service just as Facebook api says
       Facebook.login(function(response) {
-        console.log(response);
-        // Do something with response.
         $rootScope.loggedIn = true;
-        Facebook.api('/me', function(response) {
-          $rootScope.user = response;
-        });
       });
     };
 

@@ -4,15 +4,14 @@
 
 <div class="row">
   <div class="col-xs-8">
+    <select ng-change="filterMap(mapFilter)" ng-model="mapFilter"  class="form-control">
+      <option selected value="houses">Ver Casas</option>
+      <option selected value="cars">Ver Coches</option>
+    </select>
     <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-      <ui-gmap-markers models="filteredMarkers" coords="'geo'" icon="'icon'" click="onClick">
-        <ui-gmap-windows show="show">
-          <div ng-non-bindable>
-            {{festival}}
-          </div>
-        </ui-gmap-windows>
+      <ui-gmap-markers models="filteredMarkers" coords="'geo'" icon="'icon'" options="'options'" click="onClick">
       </ui-gmap-markers>
-      <ui-gmap-markers models="houseMarkers" coords="'geo'" icon="'icon'" click="onHouseClick">
+      <ui-gmap-markers models="houseMarkers" coords="'geo'" icon="'icon'" options="'options'" click="onHouseClick">
       </ui-gmap-markers>
     </ui-gmap-google-map>
   </div>
@@ -36,17 +35,15 @@
           <hr>
           <strong>Plazas libres:</strong> <span>{{selectedCarMarker.plazas}}</span>
            <hr>
-      </div>
 
-      <div>
-        <button class="btn btn-success disabled" ng-class="{disabled:selectedCarMarker==null}" ng-click="reservar(selectedCarMarker)">Reservar</button>
+            <button class="btn btn-success disabled" ng-class="{disabled:selectedCarMarker==null}" ng-click="reservar(selectedCarMarker)">Reservar coche</button>
       </div>
     </form>
 
-    <form name="houseForm">
+    <form name="houseForm"  ng-show="selectedHouseMarker">
       <input type="hidden" name="id" value="{{selectedHouseMarker.id}}">
   
-      <div ng-show="selectedHouseMarker">
+      <div>
           <hr>
           <strong>Festival:</strong> 
           <span  ng-repeat="festival in festivals | filter:{id:selectedHouseMarker.festival}">
@@ -57,10 +54,8 @@
           <hr>
           <strong>Plazas libres:</strong> <span>{{selectedHouseMarker.plazas}}</span>
            <hr>
-      </div>
 
-      <div>
-        <button class="btn btn-success disabled" ng-class="{disabled:selectedHouseMarker==null}" ng-click="reservarHouse(selectedHouseMarker)">Reservar</button>
+        <button class="btn btn-success disabled" ng-class="{disabled:selectedHouseMarker==null}" ng-click="reservarHouse(selectedHouseMarker)">Reservar Casa</button>
       </div>
     </form>
   </div>
