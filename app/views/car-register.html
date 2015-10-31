@@ -1,4 +1,6 @@
 <h1>¡Da de alta tu coche para compartir gastos!</h1>
+<p>Con este nuevo sistema queremos poner en contacto gente con coche con gente sin coche para que podais venir al concierto a un coste reducido.</p>
+<p>Proximamente os podreis apuntar a un autobus comun para fletar autobuses que os lleven y os traigan del concierto</p>
  <form name="carForm">
   <div class="form-group">
     <label>Nombre</label>
@@ -75,8 +77,12 @@
 	    </select>
   </div>
   <div class="form-group">
+    <label>Direccion</label>
+    <input type="text" class="form-control" placeholder="Direccion" ng-model-options="{ debounce: { 'default': 500 } }" ng-change="onChange(car.direccion)" ng-model="car.direccion">
+  </div>
+  <div class="form-group">
     <label>Cod.Postal</label>
-    <input type="numer" min="1" class="form-control" placeholder="Codigo Postal" ng-model="car.codigopostal">
+    <input disabled type="numer" min="1" class="form-control" placeholder="Codigo Postal" ng-model="car.codigopostal">
   </div>
   <div class="form-group">
     <label>Festival</label>
