@@ -1,0 +1,38 @@
+[
+{
+  "id" : 1,
+  "geo" : {
+    "type" : "Point",
+    "coordinates" : [-2.934938, 43.266506]
+  },
+  "user_id" : "1",
+  "provincia" : "Bizkaia",
+  "cod_postal" : "48901",
+  "plazas" : "3",
+  "festival" : "BIME",
+  "icon" : "images/apartment-3.png"
+}, {
+  "id" : 2,
+  "geo" : {
+    "type" : "Point",
+    "coordinates" : [-2.934938, 43.286606]
+  },
+  "provincia" : "Bizkaia",
+  "cod_postal" : "48901",
+  "plazas" : "3",
+  "festival" : "BIME",
+  "icon" : "images/apartment-3.png"
+}, {
+  "id" : 3,
+  "geo" : {
+    "type" : "Point",
+    "coordinates" : [-2.934938, 43.246706]
+  },
+  "provincia" : "Bizkaia",
+  "cod_postal" : "48901",
+  "plazas" : "3",
+  "festival" : "BIME",
+  "icon" : "images/apartment-3.png"
+}
+
+]

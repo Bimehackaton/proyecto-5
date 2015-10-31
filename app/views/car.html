@@ -3,6 +3,15 @@
 </style>
 
 <div>
+  ¿A qué festival vas?
+  <select name="repeatSelect" id="repeatSelect" ng-model="selectedFestival">
+      <option ng-repeat="festival in festivals" value="{{festival.id}}">{{festival.name}}</option>
+  </select>
+  <div>
+    Selected:
+    {{selectedCarMarker.festival}}
+    <button ng-click="reservar()">reservar</button>
+  </div>
   <ui-gmap-google-map center='map.center' zoom='map.zoom'>
     <ui-gmap-markers models="filteredMarkers" coords="'geo'" icon="'icon'" click="onClick">
       <ui-gmap-windows show="show">
@@ -11,16 +20,7 @@
         </div>
       </ui-gmap-windows>
     </ui-gmap-markers>
-  </ui-gmap-google-map>
-
-  <select name="repeatSelect" id="repeatSelect" ng-model="selectedFestival">
-      <option ng-repeat="festival in festivals" value="{{festival.id}}">{{festival.name}}</option>
-  </select>
-  {{selectedFestival}}
-
-  <div>
-    Sellected:
-    {{selectedCarMarker.festival}}
-    <button ng-click="reservar()">reservar</button>
-  </div>
+    <ui-gmap-markers models="houseMarkers" coords="'geo'" icon="'icon'" click="onClick">
+    </ui-gmap-markers>
+  </ui-gmap-google-map>  
 </div>

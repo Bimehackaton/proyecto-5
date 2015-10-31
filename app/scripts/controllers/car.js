@@ -31,8 +31,8 @@ angular.module('proyecto5App')
         $scope.selectedCarMarker = model;
     };
 
-    $scope.reservar = function(m) {
-      $scope.selectedCarMarker = $scope.carMarkers;
+    $scope.reservar = function(carMarker) {
+      $scope.selectedCarMarker = carMarker;
     };
 
     $http({
@@ -53,7 +53,7 @@ angular.module('proyecto5App')
         car.geo = {
           type : "Point",
           coordinates: [car.geo.lng, car.geo.lat]
-        }
+        };
         car.icon = "images/car.png";
       });
       $scope.carMarkers = response.data;
@@ -67,4 +67,11 @@ angular.module('proyecto5App')
         // or server returns response with an error status.
     });
 
+     $http({
+      url: "scripts/data/houses.json",
+      method: "GET"
+    }).then(function(response) {
+      console.log(response);
+      $scope.houseMarkers = response.data;
+    });
   });

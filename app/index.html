@@ -9,6 +9,8 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -46,11 +48,22 @@
                 <ul class="dropdown-menu">
                   <li><a href="#/car">Buscar Coche</a></li>
                   <li><a href="#/car-register">Registrar Coche</a></li>
+                  <li><a href="#/house-register">Registrar Casa</a></li>
                 </ul>
               </li>
               <li><a ng-href="#/about">Mientras</a></li>
               <li><a ng-href="#/">Despues</a></li>
-
+              <li><a ng-href="#/perfil" ng-show="loggedIn">Mi Perfil</a></li>
+              <li>
+                <button class="btn btn-block btn-social btn-facebook" ng-click="login()" ng-hide="loggedIn">
+                  <i class="fa fa-facebook"></i>login with Facebook
+                </button>
+              </li>
+              <li>
+                <button class="btn btn-block btn-social btn-facebook" ng-click="logout()" ng-show="loggedIn">
+                  <i class="fa fa-facebook"></i>logout from Facebook
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -104,6 +117,8 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/car.js"></script>
         <script src="scripts/controllers/car-register.js"></script>
+        <script src="scripts/controllers/house-register.js"></script>
+        <script src="scripts/controllers/perfil.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -24,7 +24,7 @@ angular.module('proyecto5App')
     };
 
     $scope.getLoginStatus = function() {
-      Facebook.getLoginStatus(function(response) {
+      Facebook.getLoginStatus (function(response) {
       	console.log(response);
         if(response.status === 'connected') {
           $scope.loggedIn = true;
@@ -39,5 +39,9 @@ angular.module('proyecto5App')
         console.log(response);
         $scope.user = response;
       });
+    };
+
+    $scope.logout = function() {
+      Facebook.logout();
     };
   });

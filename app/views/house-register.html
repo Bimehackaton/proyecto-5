@@ -1,0 +1,110 @@
+<h1>¡Da de alta tu casa para alojar a compañeros de festival!</h1>
+<p>Con este nuevo sistema queremos poner en contacto gente con casa con gente sin casa para que podais venir al concierto a un coste reducido.</p>
+ <form name="houseForm">
+  <div class="form-group">
+    <label>Nombre</label>
+    <input type="text" class="form-control" placeholder="Nombre" ng-model="house.user_name">
+  </div>
+   <div class="form-group">
+    <label>E-mail</label>
+    <input type="email" class="form-control" placeholder="Email" ng-model="house.email">
+  </div>
+  <div class="form-group">
+    <label>Telefono</label>
+    <input type="tel" class="form-control" placeholder="Telefono" ng-model="house.telefono">
+  </div>
+  <div class="form-group">
+    <label>Plazas</label>
+    <input type="number" min="1" class="form-control" placeholder="Plazas" ng-model="house.plazas" required>
+  </div>
+  <div class="form-group">
+    <label>Provincia</label>
+	    <select class="form-control" ng-model="house.provincia">
+	    	<option selected value='0'>(Seleccionar)</option>
+	    	<option value='2'>Álava</option>
+	    	<option value='3'>Albacete</option>
+	    	<option value='4'>Alicante/Alacant</option>
+	    	<option value='5'>Almería</option>
+	    	<option value='6'>Asturias</option>
+	    	<option value='7'>Ávila</option>
+	    	<option value='8'>Badajoz</option>
+	    	<option value='9'>Barcelona</option>
+	    	<option value='10'>Burgos</option>
+	    	<option value='11'>Cáceres</option>
+	    	<option value='12'>Cádiz</option>
+	    	<option value='13'>Cantabria</option>
+	    	<option value='14'>Castellón/Castelló</option>
+	    	<option value='15'>Ceuta</option>
+	    	<option value='16'>Ciudad Real</option>
+	    	<option value='17'>Córdoba</option>
+	    	<option value='18'>Cuenca</option>
+	    	<option value='19'>Girona</option>
+	    	<option value='20'>Las Palmas</option>
+	    	<option value='21'>Granada</option>
+	    	<option value='22'>Guadalajara</option>
+	    	<option value='23'>Guipúzcoa</option>
+	    	<option value='24'>Huelva</option>
+	    	<option value='25'>Huesca</option>
+	    	<option value='26'>Illes Balears</option>
+	    	<option value='27'>Jaén</option>
+	    	<option value='28'>A Coruña</option>
+	    	<option value='29'>La Rioja</option>
+	    	<option value='30'>León</option>
+	    	<option value='31'>Lleida</option>
+	    	<option value='32'>Lugo</option>
+	    	<option value='33'>Madrid</option>
+	    	<option value='34'>Málaga</option>
+	    	<option value='35'>Melilla</option>
+	    	<option value='36'>Murcia</option>
+	    	<option value='37'>Navarra</option>
+	    	<option value='38'>Ourense</option>
+	    	<option value='39'>Palencia</option>
+	    	<option value='40'>Pontevedra</option>
+	    	<option value='41'>Salamanca</option>
+	    	<option value='42'>Segovia</option>
+	    	<option value='43'>Sevilla</option>
+	    	<option value='44'>Soria</option>
+	    	<option value='45'>Tarragona</option>
+	    	<option value='46'>Santa Cruz de Tenerife</option>
+	    	<option value='47'>Teruel</option>
+	    	<option value='48'>Toledo</option>
+	    	<option value='49'>Valencia/Valéncia</option>
+	    	<option value='50'>Valladolid</option>
+	    	<option value='51'>Vizcaya</option>
+	    	<option value='52'>Zamora</option>
+	    	<option value='53'>Zaragoza</option>
+	    </select>
+  </div>
+  <div class="form-group">
+    <label>Direccion Completa (ej: Gran Via 18, Bilbao)</label>
+    <input type="text" class="form-control" placeholder="Direccion" ng-model-options="{ debounce: { 'default': 500 } }" ng-change="onChange(house.direccion)" ng-model="house.direccion">
+  </div>
+  <div class="form-group">
+    <label>Cod.Postal</label>
+    <input disabled type="text" class="form-control" placeholder="Codigo Postal" ng-model="house.codigopostal">
+  </div>
+  <div class="form-group">
+    <label>Festival</label>
+	    <select class="form-control" ng-model="house.festival">
+	    	<option selected value='0'>(Seleccionar)</option>
+	    	<option value='1'>BIME 2016</option>
+	    	<option value='2'>Arena Sound 2016</option>
+	    	<option value='3'>Dildo SOUND 2016</option>
+	    </select>
+  </div>
+  <button type="button" class="btn btn-default" ng-click="reset()">Borrar</button>
+  <button type="submit" class="btn btn-default" ng-click="register(house)">¡Registrar!</button>
+</form>
+
+
+<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">¡Gracias por Registrarte!</h3>
+        </div>
+        <div class="modal-body">
+            Ahora podras ver en tu perfil el coche y los contactos que se apuntan a él
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        </div>
+</script>

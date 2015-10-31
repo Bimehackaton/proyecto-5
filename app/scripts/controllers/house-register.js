@@ -8,38 +8,38 @@
  * Controller of the proyecto5App
  */
 angular.module('proyecto5App')
-    .controller('CarRegisterCtrl', function ($scope, $http, $uibModal, Facebook) {
-
-        $scope.master = {};
-        $scope.car = {};
+    .controller('HouseRegisterCtrl', function ($scope, $http, $uibModal, Facebook) {
+    	$scope.master = {};
+        $scope.house = {};
 
         Facebook.api('/me', function(response) {
-          $scope.car.user_id = response.id;
-          $scope.car.user_name = response.name;
+        	console.log(response);
+          $scope.house.user_id = response.id;
+          $scope.house.user_name = response.name;
         });
     
-        $scope.register = function (car){
-    	   console.log('pacoooo', car);
+        $scope.register = function (house){
+    	   console.log('pacoooo', house);
         };
 
         $scope.reset = function() {
           console.log('reset');
-          $scope.car = {};
+          $scope.house = {};
         };
 
       	/* Variables */
       	$scope.master = {};
-      	$scope.car = {};
+      	$scope.house = {};
 
-        $scope.register = function (car){
-        	if (!$scope.carForm.$valid) {
+        $scope.register = function (house){
+        	if (!$scope.houseForm.$valid) {
             return;
           }
 
           $http({
-            url: "https://api.mongolab.com/api/1/databases/project/collections/car?apiKey=4fccb901e4b0d43c618156c0",
+            url: "https://api.mongolab.com/api/1/databases/project/collections/house?apiKey=4fccb901e4b0d43c618156c0",
             method: "POST",
-            data : car,
+            data : house,
             headers : {
               contentType: "application/json"
             }
@@ -60,14 +60,9 @@ angular.module('proyecto5App')
             
           }).then(function(response) {
             var codigopostal = response.data.results[0].address_components[response.data.results[0].address_components.length-1].short_name;
+            $scope.house.codigopostal = codigopostal
 
-            if(!isNaN(codigopostal)){
-              $scope.car.codigopostal = codigopostal;  
-            } else {
-              $scope.car.codigopostal = 'Escriba la direccion completa';  
-            }
-
-            $scope.car.geo = response.data.results[0].geometry.location;
+            $scope.house.geo = response.data.results[0].geometry.location;
           }).catch(function(error) {
             console.log(error);
           });
@@ -75,7 +70,7 @@ angular.module('proyecto5App')
 
 
         $scope.reset = function() {
-            $scope.car = {};
+            $scope.house = {};
         };
 
 
@@ -98,13 +93,5 @@ angular.module('proyecto5App')
         $scope.toggleAnimation = function () {
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
-}).controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
 
-  $scope.ok = function () {
-    $uibModalInstance.close();
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
-});
+    });

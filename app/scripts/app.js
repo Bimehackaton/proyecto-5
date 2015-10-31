@@ -47,6 +47,16 @@ angular
         controller: 'CarRegisterCtrl',
         controllerAs: 'carregistrer'
       })
+      .when('/house-register', {
+        templateUrl: 'views/house-register.html',
+        controller: 'HouseRegisterCtrl',
+        controllerAs: 'houseregistrer'
+      })
+      .when('/perfil', {
+        templateUrl: 'views/perfil.html',
+        controller: 'PerfilCtrl',
+        controllerAs: 'perfil'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
@@ -55,4 +65,27 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function($rootScope, Facebook) {
+    Facebook.getLoginStatus(function(response) {
+      if(response.status === 'connected') {
+        $rootScope.loggedIn = true;
+      } else {
+        $rootScope.loggedIn = false;
+      }
+    });
+
+    $rootScope.login = function() {
+      // From now on you can use the Facebook service just as Facebook api says
+      Facebook.login(function(response) {
+        console.log(response);
+        // Do something with response.
+        $rootScope.loggedIn = true;
+      });
+    };
+
+    $rootScope.logout = function() {
+      Facebook.logout();
+      $rootScope.loggedIn = false;
+    }
   });
