@@ -70,6 +70,9 @@ angular
     Facebook.getLoginStatus(function(response) {
       if(response.status === 'connected') {
         $rootScope.loggedIn = true;
+        Facebook.api('/me', function(response) {
+          $rootScope.user = response;
+        });
       } else {
         $rootScope.loggedIn = false;
       }
@@ -81,6 +84,9 @@ angular
         console.log(response);
         // Do something with response.
         $rootScope.loggedIn = true;
+        Facebook.api('/me', function(response) {
+          $rootScope.user = response;
+        });
       });
     };
 
