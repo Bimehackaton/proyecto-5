@@ -1,10 +1,21 @@
 <style>
-	.angular-google-map-container { height: 400px; }
+  .angular-google-map-container { height: 400px; }
 </style>
 
 <div>
-	<ui-gmap-google-map center='map.center' zoom='map.zoom'>
-		<ui-gmap-markers models="carMarkers" coords="'self'" icon="'icon'">
+  <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+    <ui-gmap-markers models="carMarkers" coords="'self'" icon="'icon'" click="onClick">
+      <ui-gmap-windows show="show">
+        <div ng-non-bindable>
+          {{festival}}
+        </div>
+      </ui-gmap-windows>
     </ui-gmap-markers>
-	</ui-gmap-google-map>
+  </ui-gmap-google-map>
+
+  <div>
+    Sellected:
+    {{selectedCarMarker.festival}}
+    <button ng-click="reservar()">reservar</button>
+  </div>
 </div>

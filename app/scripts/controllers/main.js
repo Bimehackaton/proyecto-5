@@ -18,6 +18,7 @@ angular.module('proyecto5App')
     $scope.login = function() {
       // From now on you can use the Facebook service just as Facebook api says
       Facebook.login(function(response) {
+        console.log(response);
         // Do something with response.
       });
     };
