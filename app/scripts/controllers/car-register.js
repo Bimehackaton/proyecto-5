@@ -9,7 +9,6 @@
  */
 angular.module('proyecto5App')
   .controller('CarRegisterCtrl', function ($scope) {
-<<<<<<< HEAD
   	$scope.master = {};
   	$scope.car = {};
     $scope.register = function (car){
@@ -20,7 +19,7 @@ angular.module('proyecto5App')
       console.log('reset');
       $scope.car = {};
     };
-=======
+
   	/* Variables */
   	$scope.master = {};
   	$scope.car = {};
@@ -33,5 +32,4 @@ angular.module('proyecto5App')
     $scope.reset = function() {
         $scope.car = {};
       };
->>>>>>> cc29f066dbb53b1957e38b877df0ce68fd0aa653
   });
