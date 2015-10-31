@@ -9,6 +9,11 @@
  */
 angular.module('proyecto5App')
   .controller('CarCtrl', function ($scope, $http, $filter, Facebook) {
+    
+    $scope.carMarkers = [];
+    $scope.filteredMarkers = [];
+    $scope.houseMarkers = [];
+
     Facebook.getLoginStatus(function(response) {
       if(response.status === 'connected') {
         Facebook.api('/me', function(response) {
@@ -35,18 +40,40 @@ angular.module('proyecto5App')
       $scope.filteredMarkers = $filter("filter")($scope.carMarkers, {festival : selectedFestival});
    });
 
+    //$scope.mapFilter = "houses";
+    $scope.filterMap = function(mapFilter) {
+      console.log(mapFilter);
+      if (mapFilter == "houses") {
+        angular.forEach($scope.houseMarkers, function(houseMarker) {
+          houseMarker.options.visible = true;
+        });
+        angular.forEach($scope.carMarkers, function(carMarker) {
+          carMarker.options.visible = false;
+        });
+      } else if (mapFilter == "cars") {
+        angular.forEach($scope.houseMarkers, function(houseMarker) {
+          houseMarker.options.visible = false;
+        });
+        angular.forEach($scope.carMarkers, function(carMarker) {
+          carMarker.options.visible = true;
+        });
+      }
+    }
+
     $scope.onClick = function(marker, eventName, model) {
         model.show = !model.show;
+        $scope.selectedHouseMarker = false;
         $scope.selectedCarMarker = model;
         console.log(model);
     };
 
     $scope.onChangeFestival = function(marker, eventName, model) {
-      $scope.selectedCarMarker = null;
+      $scope.selectedCarMarker = false;
       model = null;
     };
 
     $scope.reservar = function(carMarker) {
+      $scope.selectedHouseMarker = false;
       $scope.selectedCarMarker = carMarker;
       $http({
         url: "https://api.mongolab.com/api/1/databases/project/collections/reservedCar?apiKey=4fccb901e4b0d43c618156c0",
@@ -80,6 +107,7 @@ angular.module('proyecto5App')
           coordinates: [car.geo.lng, car.geo.lat]
         };
         car.icon = "images/car.png";
+        car.options = {};
       });
       $scope.carMarkers = response.data;
       $scope.filteredMarkers = $scope.carMarkers;
@@ -104,18 +132,21 @@ angular.module('proyecto5App')
           coordinates: [house.geo.lng, house.geo.lat]
         };
         house.icon = "images/apartment-3.png";
+        house.options = {};
       });
       $scope.houseMarkers = response.data;
     });
 
     $scope.onHouseClick = function(marker, eventName, model) {
         model.show = !model.show;
+        $scope.selectedCarMarker = false;
         $scope.selectedHouseMarker = model;
         console.log(model);
     };
 
     $scope.reservarHouse = function(houseMarker) {
       $scope.selectedHouseMarker = houseMarker;
+      $scope.selectedCarMarker = null;
       $http({
         url: "https://api.mongolab.com/api/1/databases/project/collections/reservedHouse?apiKey=4fccb901e4b0d43c618156c0",
         method: "POST",
