@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'uiGmapgoogle-maps',
     'facebook',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'spotify'
   ])
 
   .config(function(uiGmapGoogleMapApiProvider, FacebookProvider) {

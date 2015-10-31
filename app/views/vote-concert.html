@@ -17,7 +17,19 @@
 
   <uib-accordion close-others="oneAtATime">
 	<uib-accordion-group ng-repeat="concert in concerts" heading="{{concert.name}} | {{concert.likes}}">
-  		{{concert.posible-hours.hour}}
+	<div class="media">
+	  <div class="media-left">
+	      <img class="media-object img-responsive img-thumbnail" width="100" src="{{concert.url}}" alt="{{concert.name}}">
+	  </div>
+	  <div class="media-body">
+	    <h4 class="media-heading">{{concert.description}}</h4>
+	    {{concert.track}}
+	    <audio loop="loop" controls="controls">
+		 <source ng-src="concert.track" type='audio/mpeg'>
+		 <p>Lo siento pero no soportas musica en tu navegador...¡Mierdas, que eres un mierdas!.</p>
+		</audio>
+	  </div>
+	</div>
 	</uib-accordion-group>
   </uib-accordion>
 </div>
