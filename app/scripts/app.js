@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'uiGmapgoogle-maps',
-    'facebook'
+    'facebook',
+    'ui.bootstrap'
   ])
 
   .config(function(uiGmapGoogleMapApiProvider, FacebookProvider) {

@@ -77,17 +77,17 @@
 	    </select>
   </div>
   <div class="form-group">
-    <label>Direccion</label>
+    <label>Direccion Completa (ej: Gran Via 18, Bilbao)</label>
     <input type="text" class="form-control" placeholder="Direccion" ng-model-options="{ debounce: { 'default': 500 } }" ng-change="onChange(car.direccion)" ng-model="car.direccion">
   </div>
   <div class="form-group">
     <label>Cod.Postal</label>
-    <input disabled type="numer" min="1" class="form-control" placeholder="Codigo Postal" ng-model="car.codigopostal">
+    <input disabled type="text" class="form-control" placeholder="Codigo Postal" ng-model="car.codigopostal">
   </div>
   <div class="form-group">
     <label>Festival</label>
 	    <select class="form-control" ng-model="car.festival">
-	    	<option value='0'>(Seleccionar)</option>
+	    	<option selected value='0'>(Seleccionar)</option>
 	    	<option value='1'>BIME 2016</option>
 	    	<option value='2'>Arena Sound 2016</option>
 	    	<option value='3'>Dildo SOUND 2016</option>
@@ -96,3 +96,16 @@
   <button type="button" class="btn btn-default" ng-click="reset()">Borrar</button>
   <button type="submit" class="btn btn-default" ng-click="register(car)">¡Registrar!</button>
 </form>
+
+
+<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">¡Gracias por Registrarte!</h3>
+        </div>
+        <div class="modal-body">
+            Ahora podras ver en tu perfil el coche y los contactos que se apuntan a él
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        </div>
+</script>
