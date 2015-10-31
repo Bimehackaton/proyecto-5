@@ -30,12 +30,19 @@ angular.module('proyecto5App')
     };
 
     $http({
-      method : 'GET',
-      url    : '/scripts/data/cars.json'
-    }).then(function successCallback(response) {
-      $scope.carMarkers = response.data;
-
-      
+      url: "https://api.mongolab.com/api/1/databases/project/collections/car?apiKey=4fccb901e4b0d43c618156c0",
+      method: "GET"
+    }).then(function(response) {
+      angular.forEach(response.data, function(car) {
+        car.id = car._id.$oid;
+        car.geo = {
+          type : "Point",
+          coordinates: [car.geo.lng, car.geo.lat]
+        }
+        car.icon = "images/car.png";
+      });
+      $scope.carMarkers = response.data;  
+      console.log($scope.carMarkers)  
 
       // this callback will be called asynchronously
       // when the response is available
