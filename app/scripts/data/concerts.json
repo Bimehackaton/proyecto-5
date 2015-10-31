@@ -1,0 +1,43 @@
+[
+{
+  "id" : 1,
+  "name": "AC/DC",
+  "likes" : 0,
+  "real-hour": "9:00",
+  "posible-hours" : 
+    [
+      {"hour":"9:00", "person":1},
+      {"hour":"10:00", "person":1},
+      {"hour":"11:00", "person":1},
+      {"hour":"12:00", "person":1},
+      {"hour":"13:00", "person":1}
+    ]
+},{
+  "id" : 2,
+  "name": "Extremoduro",
+  "likes" : 0,
+  "real-hour": "10:00",
+  "posible-hours" : 
+    [
+      {"hour":"9:00", "person":1},
+      {"hour":"10:00", "person":1},
+      {"hour":"11:00", "person":1},
+      {"hour":"12:00", "person":1},
+      {"hour":"13:00", "person":1}
+    ]
+},{
+  "id" : 3,
+  "name": "La Polla Records",
+  "likes" : 0,
+  "real-hour": "11:00",
+  "posible-hours" : 
+    [
+      {"hour":"9:00", "person":1},
+      {"hour":"10:00", "person":1},
+      {"hour":"11:00", "person":1},
+      {"hour":"12:00", "person":1},
+      {"hour":"13:00", "person":1}
+    ]
+}
+
+]
