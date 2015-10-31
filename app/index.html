@@ -43,14 +43,38 @@
             <ul class="nav navbar-nav">
               <li class="dropdown">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-                  Acciones <span class="caret"></span>
+                  Antes <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="#/car">Buscar Coche o Casa</a></li>
-                  <li><a href="#/car-register">Registrar Coche</a></li>
-                  <li><a href="#/house-register">Registrar Casa</a></li>
+                  <li><a ng-show="loggedIn" href="#/car-register">Registrar Coche</a></li>
+                  <li><a ng-show="loggedIn" href="#/house-register">Registrar Casa</a></li>
+                  <li><a ng-show="loggedIn" href="#/vote-concert">Votar Conciertos</a></li>
                 </ul>
               </li>
+
+              <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                  Mientras <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a ng-show="loggedIn" href="#/create-calendar">Crear Agenda</a></li>
+                  <li><a ng-show="loggedIn" href="#/find-concert">Buscar Conciertos</a></li>
+                  <li><a ng-show="loggedIn" href="#/local-contacts">Localizacion de Contactos</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                  Despues <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a ng-show="loggedIn" href="#/comment-concert">Comentar Conciertos</a></li>
+                  <li><a ng-show="loggedIn" href="#/create-friends">Crear Amistades</a></li>
+                  <li><a ng-show="loggedIn" href="#/future-events">Notificaciones de Eventos Futuros</a></li>
+                </ul>
+              </li>
+
               <!--<li><a ng-href="#/about">Mientras</a></li>
               <li><a ng-href="#/">Despues</a></li>-->
               <li><a ng-href="#/perfil" ng-show="loggedIn">Mi Perfil</a></li>
