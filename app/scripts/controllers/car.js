@@ -8,7 +8,17 @@
  * Controller of the proyecto5App
  */
 angular.module('proyecto5App')
-  .controller('CarCtrl', function ($scope, $http, $filter) {
+  .controller('CarCtrl', function ($scope, $http, $filter, Facebook) {
+    Facebook.getLoginStatus(function(response) {
+      if(response.status === 'connected') {
+        Facebook.api('/me', function(response) {
+          $scope.user = response;
+          console.log($scope.user);
+        });
+      }
+    });
+    
+    
     $scope.map = {
       center: {
       latitude: 43.266506,
