@@ -8,14 +8,17 @@
  * Controller of the proyecto5App
  */
 angular.module('proyecto5App')
-  .controller('CarRegisterCtrl', function () {
-  	this.master = {};
-  	this.car = {};
-    this.register = function (car){
-    	console.log('pacoooo');
-    }
+  .controller('CarRegisterCtrl', function ($scope) {
+  	/* Variables */
+  	$scope.master = {};
+  	$scope.car = {};
 
-    this.reset = function() {
-        this.car = {};
+    $scope.register = function (car){
+    	console.log('pacoooo');
+    	console.log(car);
+    };
+
+    $scope.reset = function() {
+        $scope.car = {};
       };
   });
