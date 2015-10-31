@@ -2,25 +2,38 @@
   .angular-google-map-container { height: 400px; }
 </style>
 
-<div>
-  <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-    <ui-gmap-markers models="filteredMarkers" coords="'geo'" icon="'icon'" click="onClick">
-      <ui-gmap-windows show="show">
-        <div ng-non-bindable>
-          {{festival}}
-        </div>
-      </ui-gmap-windows>
-    </ui-gmap-markers>
-  </ui-gmap-google-map>
-
-  <select name="repeatSelect" id="repeatSelect" ng-model="selectedFestival">
-      <option ng-repeat="festival in festivals" value="{{festival.id}}">{{festival.name}}</option>
-  </select>
-  {{selectedFestival}}
-
-  <div>
-    Sellected:
-    {{selectedCarMarker.festival}}
-    <button ng-click="reservar()">reservar</button>
+<div class="row">
+  <div class="col-xs-8">
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+      <ui-gmap-markers models="filteredMarkers" coords="'geo'" icon="'icon'" click="onClick">
+        <ui-gmap-windows show="show">
+          <div ng-non-bindable>
+            {{festival}}
+          </div>
+        </ui-gmap-windows>
+      </ui-gmap-markers>
+    </ui-gmap-google-map>
   </div>
+  <div class="col-xs-4">
+    <form name="carForm">
+      <input type="hidden" name="id" value="{{selectedCarMarker.id}}"
+      <div class="form-group">
+        <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="selectedFestival">
+            <option ng-repeat="festival in festivals" value="{{festival.id}}">{{festival.name}}</option>
+        </select>
+      </div>
+    
+      <div ng-show="selectedCarMarker" ng-repeat="festival in festivals | filter:{id:selectedFestival}">
+          Festival: <span>{{festival.name}}</span><br />
+          <hr>
+          Direccion: <span>{{selectedCarMarker.direccion}}</span>
+          <hr>
+          Plazas libres: <span>{{selectedCarMarker.plazas}}</span>
+      </div>
+
+      <div>
+        <button ng-click="reservar()">reservar</button>
+      </div>
+    </div>
+  </form>
 </div>
