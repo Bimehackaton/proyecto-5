@@ -16,15 +16,17 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'facebook'
   ])
 
-  .config(function(uiGmapGoogleMapApiProvider) {
+  .config(function(uiGmapGoogleMapApiProvider, FacebookProvider) {
     uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',
         v: '3.20', //defaults to latest 3.X anyhow
         libraries: 'weather,geometry,visualization'
     });
+    FacebookProvider.init('817693171681304');
   })
 
   .config(function ($routeProvider) {
