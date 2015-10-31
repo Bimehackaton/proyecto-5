@@ -29,6 +29,12 @@ angular.module('proyecto5App')
     $scope.onClick = function(marker, eventName, model) {
         model.show = !model.show;
         $scope.selectedCarMarker = model;
+        console.log(model);
+    };
+
+    $scope.onChangeFestival = function(marker, eventName, model) {
+      $scope.selectedCarMarker = null;
+      model = null;
     };
 
     $scope.reservar = function(carMarker) {

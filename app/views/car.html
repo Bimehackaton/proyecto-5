@@ -23,4 +23,29 @@
     <ui-gmap-markers models="houseMarkers" coords="'geo'" icon="'icon'" click="onClick">
     </ui-gmap-markers>
   </ui-gmap-google-map>  
+
+  <div class="col-xs-4">
+    <form name="carForm">
+      <input type="hidden" name="id" value="{{selectedCarMarker.id}}">
+      <div class="form-group">
+        <select ng-change="onChangeFestival()" class="form-control" name="repeatSelect" id="repeatSelect" ng-model="selectedFestival">
+            <option  ng-repeat="festival in festivals" value="{{festival.id}}">{{festival.name}}</option>
+        </select>
+      </div>
+    
+      <div ng-show="selectedCarMarker" ng-repeat="festival in festivals | filter:{id:selectedFestival}">
+          <hr>
+          <strong>Festival:</strong> <span>{{festival.name}}</span><br />
+          <hr>
+          <strong>Direccion:</strong> <span>{{selectedCarMarker.direccion}}</span>
+          <hr>
+          <strong>Plazas libres:</strong> <span>{{selectedCarMarker.plazas}}</span>
+           <hr>
+      </div>
+
+      <div>
+        <button class="btn btn-success disabled" ng-class="{disabled:selectedCarMarker==null}" ng-click="reservar()">Reservar</button>
+      </div>
+    </div>
+  </form>
 </div>
