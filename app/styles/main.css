@@ -87,6 +87,11 @@ body {
 body
 {
     font-family: 'Open Sans', sans-serif;
+    /*background: url("/images/Food-truck-festival-jpg.jpg") no-repeat fixed center;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
 }
 
 .fb-profile img.fb-image-lg{

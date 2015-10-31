@@ -5,6 +5,7 @@
 <div class="row">
   <div class="col-xs-8">
     <select ng-change="filterMap(mapFilter)" ng-model="mapFilter"  class="form-control">
+      <option value=''>- Elige ver casas o coches compartidos -</option>
       <option selected value="houses">Ver Casas</option>
       <option selected value="cars">Ver Coches</option>
     </select>
@@ -20,6 +21,7 @@
       <input type="hidden" name="id" value="{{selectedCarMarker.id}}">
       <div class="form-group">
         <select ng-change="onChangeFestival()" class="form-control" name="repeatSelect" id="repeatSelect" ng-model="selectedFestival">
+            <option value=''>- Elige festival -</option>
             <option  ng-repeat="festival in festivals" value="{{festival.id}}">{{festival.name}}</option>
         </select>
       </div>
